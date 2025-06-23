@@ -1,0 +1,82 @@
+.todo-item{
+    background-color:#555e71;
+    width:380px;
+    height:30px;
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    margin-bottom: 15px; 
+    padding: 10px;
+
+    border-radius:7px
+    
+}
+
+.todo-item2{
+     background-color:#555e71;
+    width:150px;
+    height:30px;
+    display:flex;
+    justify-content:space-between;
+   font-family: sans-serif
+    
+   
+}
+.todo-title{
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 5px;
+    border:2px solid black;
+    font-size:large;
+    border-radius:7px;
+    font-family: sans-serif
+}
+.date-title{
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 5px;
+    
+    font-size:large;
+    border-radius:7px;
+    font-family: sans-serif;
+    font-size: medium;
+    color: #34363f;
+}
+.delete-btn{
+    background-color: rgb(215, 63, 63);
+    color:white;
+    border-radius:7px;
+    width:60px
+}
+.delete-btn2{
+    background-color: rgb(209, 183, 13);
+    color:white;
+    border-radius:7px;
+    width:60px
+}
+.input-btn{
+    background-color:#555e71;
+    border:7x solid #00bfff;
+     padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 5px;
+    border-radius:7px;
+    font-size: larger;
+    color:white
+}
+.save-btn{
+  background-color: #00FF00;
+    color:white;
+    border-radius:7px;
+    width:60px
+}
+.date-item2{
+     background-color:#555e71;
+    width:200px;
+    height:30px;
+    display:flex;
+    justify-content:space-between;
+   font-family: sans-serif
+    
+   
+}

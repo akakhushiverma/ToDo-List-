@@ -1,0 +1,212 @@
+<html>
+    <head>
+       
+         <link rel="stylesheet" href="style.css">
+
+         <style>
+   input:hover {
+    border: 5px solid #00bfff; 
+}
+
+   
+</style>
+
+    </head>
+</html>
+<body  style="background-color: #1b2028;">>
+
+<br>
+<br>
+<br>
+   
+   <center>
+      <div id="div1" style="background-color: #2b3039;color:white;width:500px;">
+        <br>
+        <br>
+        <div>
+            <h1 style="font-family: sans-serif;">
+            Todo List
+
+              </h1>
+        </div>
+         <div>
+            <i style="font-family: sans-serif;color:#5e6677;">
+               Let's listout our daily tasks and acheive it!
+
+            </i>
+        </div>
+       
+            <div class="todo-item" >
+                <div class="date-title" >
+                   
+                     select date :
+                   
+                </div >
+                <div class="date-item2">
+                    <div>
+                        <select name="Date">
+                        <option value="Date">Date</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        
+                        </select>
+                    </div>
+                    <div>
+                        <select name="Month">
+                        <option value="Month">Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                         <option value="December">December</option>
+                       </select>
+                    </div>
+                    <div>
+                        <select name="Year">
+                        <option value="Year">Year</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                       </select>
+                    </div>
+                </div>
+                
+            </div> 
+            <div >
+                <input style="background-color:#555e71;color:#b3b7be;border-radius: 7px;width:400px;height:50px; font-family: sans-serif" placeholder="Enter your task"   >
+                    
+                
+            </div> 
+            <br>
+            <br>
+            <div >
+             <button style="border-radius: 7px;background-color:rgb(70, 103, 222);color:black;width:400;height:50px" onclick="addtodo() ">
+               <h3 style="color:white">
+                Add
+               </h3>
+            </button>
+            </div>  
+             <div id="todo"></div>
+             
+        
+       
+    </div>
+   </center>
+    
+</body>
+<script>
+    //state
+    let todos=[]
+   
+    function addtodo(){
+        const inputElement = document.querySelector("input");
+        todos.push({
+            
+            title:inputElement.value
+        })
+        inputElement.value = ""; 
+       render()
+    }
+    function deletelasttodo(){
+        todos.splice(todos.length-1,1) //remove last element from the array
+        render()
+    }
+    function deletefirsttodo(){
+        todos.splice(0,1) //remove last element from the array
+        render()
+    }
+    function dltcurrenttodo(index){
+        todos.splice(index,1);   
+    }
+    
+    //component
+    function createtodocomponent(todo,index){
+        const div=document.createElement("div")
+        const divin=document.createElement("div")
+           const h1=document.createElement("div")
+           const button=document.createElement("button")
+           const button2=document.createElement("button")
+            
+           button.innerHTML="Delete"
+           button2.innerHTML="Edit"
+           h1.innerHTML=todo.title;
+           
+           divin.append(button)
+           divin.append(button2)
+           
+           div.append(h1)
+           div.append(divin)
+           
+           divin.classList.add("todo-item2");
+           div.classList.add("todo-item");
+           h1.classList.add("todo-title");
+           button.classList.add("delete-btn");
+           button2.classList.add("delete-btn2");
+           
+           button.onclick=function(){
+             dltcurrenttodo(index);
+             render();
+           };
+           
+           button2.onclick = function () {
+              const savebtn=document.createElement("button")
+              savebtn.innerHTML="Save"
+              savebtn.classList.add("save-btn");
+             divin.replaceChild(savebtn,button2);
+            const input=document.createElement("input")
+             input.classList.add("input-btn");
+            div.replaceChild(input, h1);
+            savebtn.onclick=function () {
+               todos[index].title=input.value
+               
+                divin.replaceChild(button2,savebtn);
+            }
+          };
+
+
+             
+           
+          
+
+           return div
+    }
+    //render ...react ki library me available hota h
+    function render(){
+        document.querySelector("#todo").innerHTML= "";
+       
+        for(let i=0;i< todos.length;i++){
+            
+           
+           const element=createtodocomponent(todos[i],i);
+           document.querySelector("#todo").appendChild(element);
+           
+          
+        }
+    }
+</script>
+</body>
+</html>
